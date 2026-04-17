@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Webpage Inventory | Live + Pending (2024–2026)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f6f2;
+            color: #1f1f1f;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 2rem 1.8rem;
+        }
+        .header {
+            border-bottom: 3px solid #b58b2f;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .header h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #8b1e3f;
+            letter-spacing: -0.2px;
+        }
+        .header p {
+            color: #5a5a5a;
+            margin-top: 0.25rem;
+            font-size: 0.85rem;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #8b1e3f;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 5px solid #b58b2f;
+            padding-left: 0.9rem;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 18px;
+            border: 1px solid #e2dbd0;
+            background: white;
+            margin: 1rem 0 1.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th {
+            text-align: left;
+            padding: 0.9rem 1rem;
+            background: #f9f7f3;
+            font-weight: 600;
+            color: #8b1e3f;
+            border-bottom: 1px solid #e2dbd0;
+        }
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f0ede8;
+        }
+        tr:hover td {
+            background: #fefaf0;
+        }
+        /* status badges */
+        .status-live {
+            background: #e8f5e9;
+            color: #2e6b2f;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-live i {
+            margin-right: 4px;
+        }
+        .status-onprocess {
+            background: #fff3e0;
+            color: #b85c00;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-imagesissue {
+            background: #ffebee;
+            color: #c62828;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-contentpending {
+            background: #fce4ec;
+            color: #ad1457;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-cancel {
+            background: #eceff1;
+            color: #546e7a;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .footer-note {
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            color: #7e7a74;
+            text-align: center;
+            border-top: 1px solid #e9e2d8;
+            padding-top: 1rem;
+        }
+        .badge-icon {
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-table-list"></i> Complete Webpage Inventory</h1>
+        <p>Delivered (LIVE) + Pending / Cancelled · 2024 → 2025 cycle</p>
+    </div>
+
+    <div class="section-title">
+        📋 All Webpages (1 to 42)
+    </div>
+
+    <div class="table-wrapper">
+        <table id="masterTable">
+            <thead>
+                <tr><th>#</th><th>Webpage Name</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be injected via JavaScript for clarity and maintainability -->
+            </tbody>
+        </table>
+    </div>
+
+    
+</div>
+
+<script>
+    // 1. Delivered LIVE pages (1 to 35)
+    const deliveredPages = [
+        "IITK Vision Fund", "Planned Giving", "FACE", "IITK Samanvay", "CSR",
+        "CSR Fund Scholarship", "IITKarvaan", "Annual Giving", "Annual Giving with Form",
+        "Season of Giving", "MAGIK", "MAGIK with form", "Class of 2000", "Class of 1986",
+        "Class of 1976", "Class of 2011", "Class of 1991", "Class of 1966", "Class of 2015",
+        "Class of 1990", "Zoho Project Dashboard", "Zoho Upcoming Events", "Zoho Award Nominations",
+        "Zoho Giving Back", "Zoho Pledge", "Zoho project", "Zoho My Contribution", "Zoho Alumni Services",
+        "Zoho VH booking", "Zoho Reunion Admin page",
+        // Additional 5 as requested (31 to 35)
+        "Giving Back", "Annual Giving 2024", "IITK Samanvay 2024", "Research Proposals", "M.A.G.I.K 2024"
+    ];
+
+    // 2. Pending / Cancelled items (without 2026 ones first, then 2026 ones at bottom)
+    // Non-2026 pending items (as per user's array, but excluding those with "2026")
+    const pendingNon2026 = [
+        { name: "Young Faculty Fellowship", status: "cancel", label: "Cancelled", icon: "fa-ban" },
+        { name: "Class of 1999", status: "contentpending", label: "Content Pending", icon: "fa-file-alt" },
+        { name: "1$ campaign", status: "cancel", label: "Cancelled", icon: "fa-ban" },
+        { name: "Gangwal School", status: "cancel", label: "Cancelled", icon: "fa-ban" }
+    ];
+
+    // 2026 items (to be placed at the very bottom)
+    const pending2026 = [
+        { name: "IITKarvaan main page 2026", status: "onprocess", label: "On Process", icon: "fa-spinner" },
+        { name: "A.I.M 2026", status: "imagesissue", label: "Images Issue", icon: "fa-image" },
+        { name: "Community Welfare (includes 6 pages) 2026", status: "onprocess", label: "On Process", icon: "fa-spinner" }
+    ];
+
+    // Combine: first all delivered, then non-2026 pending, then 2026 pending at the bottom
+    const allItems = [];
+
+    // Add delivered live pages (status = live)
+    deliveredPages.forEach((name, idx) => {
+        allItems.push({
+            name: name,
+            statusType: "live",
+            label: "Live",
+            icon: "fa-check-circle"
+        });
+    });
+
+    // Add non-2026 pending
+    pendingNon2026.forEach(item => {
+        allItems.push({
+            name: item.name,
+            statusType: item.status,
+            label: item.label,
+            icon: item.icon
+        });
+    });
+
+    // Add 2026 items at the bottom
+    pending2026.forEach(item => {
+        allItems.push({
+            name: item.name,
+            statusType: item.status,
+            label: item.label,
+            icon: item.icon
+        });
+    });
+
+    // Render table
+    const tbody = document.querySelector('#masterTable tbody');
+    tbody.innerHTML = '';
+
+    allItems.forEach((item, index) => {
+        const row = tbody.insertRow();
+        // Serial number
+        row.insertCell(0).textContent = index + 1;
+        // Webpage name
+        row.insertCell(1).textContent = item.name;
+        
+        // Status cell with appropriate badge class and icon
+        let statusClass = '';
+        let iconHtml = '';
+        switch(item.statusType) {
+            case 'live':
+                statusClass = 'status-live';
+                iconHtml = '<i class="fas fa-check-circle"></i>';
+                break;
+            case 'onprocess':
+                statusClass = 'status-onprocess';
+                iconHtml = '<i class="fas fa-spinner fa-pulse"></i>';
+                break;
+            case 'imagesissue':
+                statusClass = 'status-imagesissue';
+                iconHtml = '<i class="fas fa-image"></i>';
+                break;
+            case 'contentpending':
+                statusClass = 'status-contentpending';
+                iconHtml = '<i class="fas fa-file-alt"></i>';
+                break;
+            case 'cancel':
+                statusClass = 'status-cancel';
+                iconHtml = '<i class="fas fa-ban"></i>';
+                break;
+            default:
+                statusClass = 'status-onprocess';
+                iconHtml = '<i class="fas fa-spinner"></i>';
+        }
+        row.insertCell(2).innerHTML = `<span class="${statusClass}">${iconHtml} ${item.label}</span>`;
+    });
+
+    // Optional: console confirmation
+    console.log(`Total webpages listed: ${allItems.length} (35 live + 4 non-2026 pending + 3 2026 items = 42)`);
+</script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Webpage Inventory | Live + Pending (2024–2026)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f6f2;
+            color: #1f1f1f;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 2rem 1.8rem;
+        }
+        .header {
+            border-bottom: 3px solid #b58b2f;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .header h1 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #8b1e3f;
+            letter-spacing: -0.2px;
+        }
+        .header p {
+            color: #5a5a5a;
+            margin-top: 0.25rem;
+            font-size: 0.85rem;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #8b1e3f;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 5px solid #b58b2f;
+            padding-left: 0.9rem;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 18px;
+            border: 1px solid #e2dbd0;
+            background: white;
+            margin: 1rem 0 1.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        th {
+            text-align: left;
+            padding: 0.9rem 1rem;
+            background: #f9f7f3;
+            font-weight: 600;
+            color: #8b1e3f;
+            border-bottom: 1px solid #e2dbd0;
+        }
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f0ede8;
+        }
+        tr:hover td {
+            background: #fefaf0;
+        }
+        /* status badges */
+        .status-live {
+            background: #e8f5e9;
+            color: #2e6b2f;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-live i {
+            margin-right: 4px;
+        }
+        .status-onprocess {
+            background: #fff3e0;
+            color: #b85c00;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-imagesissue {
+            background: #ffebee;
+            color: #c62828;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-contentpending {
+            background: #fce4ec;
+            color: #ad1457;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .status-cancel {
+            background: #eceff1;
+            color: #546e7a;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .footer-note {
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            color: #7e7a74;
+            text-align: center;
+            border-top: 1px solid #e9e2d8;
+            padding-top: 1rem;
+        }
+        .webpage-link {
+            text-decoration: none;
+            color: #1f1f1f;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .webpage-link:hover {
+            color: #8b1e3f;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1><i class="fas fa-table-list"></i> Complete Webpage Inventory</h1>
+        <p>Delivered (LIVE) + Pending / Cancelled · 2024 → 2025 cycle</p>
+    </div>
+
+    <div class="section-title">
+        📋 All Webpages (1 to 42)
+    </div>
+
+    <div class="table-wrapper">
+        <table id="masterTable">
+            <thead>
+                <tr><th>#</th><th>Webpage Name</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+                <!-- Rows injected via JavaScript with clickable links -->
+            </tbody>
+        </table>
+    </div>
+    <div class="footer-note">
+        ✅ Each webpage name is a clickable link. You can manually replace any <code>href</code> value in the JavaScript data arrays.<br>
+        Example: <strong>IITK Vision Fund</strong> points to <code>https://iitk.ac.in/dora/iitkvisionfund/</code>. Others use auto-generated slugs; edit as needed.
+    </div>
+</div>
+
+<script>
+    // Helper: generate a simple slug from name (lowercase, spaces/hyphens replaced, remove special chars)
+    function slugify(name) {
+        return name.toLowerCase()
+            .replace(/[\(\)]/g, '')
+            .replace(/\s+/g, '-')
+            .replace(/[^a-z0-9\-]/g, '')
+            .replace(/-+/g, '-');
+    }
+
+    // ----- DELIVERED LIVE PAGES (1 to 35) with custom URLs -----
+    // Each object: { name, url, statusType, label }
+    const deliveredPages = [
+        { name: "IITK Vision Fund", url: "https://iitk.ac.in/dora/iitkvisionfund/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Planned Giving", url: "https://iitk.ac.in/dora/planned-giving/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "FACE", url: "https://iitk.ac.in/dora/face/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "IITK Samanvay", url: "https://iitk.ac.in/dora/iitk-samanvay-2025/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "CSR", url: "https://iitk.ac.in/dora/csr/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "CSR Fund Scholarship", url: "https://iitk.ac.in/dora/csr-funded-scholarships/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "IITKarvaan", url: "https://iitk.ac.in/dora/iitkarvaan-2025/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Annual Giving", url: "https://iitk.ac.in/dora/annualgiving/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Annual Giving with Form", url: "https://iitk.ac.in/dora/annualgiving/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Season of Giving", url: "https://iitkfoundation.org/season-of-giving/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "MAGIK", url: "https://iitk.ac.in/dora/magik/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "MAGIK with form", url: "https://iitk.ac.in/dora/magik/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Class of 2000", url: "https://iitk.ac.in/dora/reunion/class-of-2000/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Class of 1986", url: "https://iitk.ac.in/dora/reunion/class-of-1986/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Class of 1976", url: "https://iitk.ac.in/dora/reunion/class-of-1976/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Class of 2011", url: "https://iitk.ac.in/dora/reunion/class-of-2011/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Class of 1991", url: "https://iitk.ac.in/dora/reunion/class-of-1991/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Class of 1966", url: "https://iitk.ac.in/dora/reunion/class-of-1966/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Class of 2015", url: "https://iitk.ac.in/dora/reunion/class-of-2015/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Class of 1990", url: "https://iitk.ac.in/dora/reunion/class-of-1990/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho Project Dashboard", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho Upcoming Events", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho Award Nominations", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho Giving Back", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho Pledge", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho project", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho My Contribution", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho Alumni Services", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho VH booking", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Zoho Reunion Admin page", url: "https://alumnidonorportal.vercel.app/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        // Additional 5 (31 to 35)
+        { name: "Giving Back", url: "https://iitk.ac.in/dora/giveback/", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Annual Giving 2024", url: "", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "IITK Samanvay 2024", url: "", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "Research Proposals", url: "https://iitk.ac.in/dora/ProposalPortal/dist/indexnew.html", statusType: "live", label: "Live", icon: "fa-check-circle" },
+        { name: "M.A.G.I.K 2024", url: "", statusType: "live", label: "Live", icon: "fa-check-circle" }
+    ];
+
+    // Non-2026 pending items (with placeholder URLs; you can replace)
+    const pendingNon2026 = [
+        { name: "Young Faculty Fellowship", url: "https://young-faculty-fellowship.vercel.app/", statusType: "cancel", label: "Cancelled", icon: "fa-ban" },
+        { name: "Class of 1999", url: "#", statusType: "contentpending", label: "Content Pending", icon: "fa-file-alt" },
+        { name: "1$ campaign", url: "#", statusType: "cancel", label: "Cancelled", icon: "fa-ban" },
+        { name: "Gangwal School", url: "#", statusType: "cancel", label: "Cancelled", icon: "fa-ban" }
+    ];
+
+    // 2026 items (placed at bottom)
+    const pending2026 = [
+        { name: "IITKarvaan main page 2026", url: "#", statusType: "onprocess", label: "On Process", icon: "fa-spinner" },
+        { name: "A.I.M 2026", url: "#", statusType: "imagesissue", label: "Images Issue", icon: "fa-image" },
+        { name: "Community Welfare (includes 6 pages) 2026", url: "#", statusType: "onprocess", label: "On Process", icon: "fa-spinner" }
+    ];
+
+    // Combine all items in order: delivered (35) + non2026 (4) + 2026 (3) = 42
+    const allItems = [...deliveredPages, ...pendingNon2026, ...pending2026];
+
+    // Render table with clickable links
+    const tbody = document.querySelector('#masterTable tbody');
+    tbody.innerHTML = '';
+
+    allItems.forEach((item, index) => {
+        const row = tbody.insertRow();
+        // Serial number
+        row.insertCell(0).textContent = index + 1;
+        
+        // Webpage name as clickable link
+        const nameCell = row.insertCell(1);
+        const link = document.createElement('a');
+        link.href = item.url;
+        link.textContent = item.name;
+        link.className = 'webpage-link';
+        link.target = '_blank';   // opens in new tab for easy verification
+        link.rel = 'noopener noreferrer';
+        nameCell.appendChild(link);
+        
+        // Status cell with badge
+        let statusClass = '';
+        let iconHtml = '';
+        switch(item.statusType) {
+            case 'live':
+                statusClass = 'status-live';
+                iconHtml = '<i class="fas fa-check-circle"></i>';
+                break;
+            case 'onprocess':
+                statusClass = 'status-onprocess';
+                iconHtml = '<i class="fas fa-spinner fa-pulse"></i>';
+                break;
+            case 'imagesissue':
+                statusClass = 'status-imagesissue';
+                iconHtml = '<i class="fas fa-image"></i>';
+                break;
+            case 'contentpending':
+                statusClass = 'status-contentpending';
+                iconHtml = '<i class="fas fa-file-alt"></i>';
+                break;
+            case 'cancel':
+                statusClass = 'status-cancel';
+                iconHtml = '<i class="fas fa-ban"></i>';
+                break;
+            default:
+                statusClass = 'status-onprocess';
+                iconHtml = '<i class="fas fa-spinner"></i>';
+        }
+        row.insertCell(2).innerHTML = `<span class="${statusClass}">${iconHtml} ${item.label}</span>`;
+    });
+
+    console.log(`Total webpages with links: ${allItems.length} (35 live + 4 pending/cancelled + 3 2026 items)`);
+</script>
+</body>
+</html>
