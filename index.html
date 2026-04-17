@@ -168,7 +168,7 @@
     </div>
 
     <div class="section-title">
-        📋 All Webpages (1 to 44)
+        📋 All Webpages (1 to 45)
     </div>
 
     <div class="table-wrapper">
@@ -246,10 +246,13 @@
     // New pages as requested (added at the bottom)
     const extraPages = [
         { name: "Kaira Karmakar Memorial Scholarship", url: "https://iitk.ac.in/dora/kaira-karmakar-memorial-scholarship/", statusType: "live", label: "Live" },
-        { name: "Kotak School of Sustainability", url: "#", statusType: "cancel", label: "Cancelled" }
+        { name: "Kotak School of Sustainability", url: "#", statusType: "cancel", label: "Cancelled" },
+
+        { name: "Class of 1967 Memorial Page", url: "https://classof1967-246h.vercel.app/", statusType: "cancel", label: "Cancelled" }
+
     ];
 
-    // Combine everything in order: delivered (35) + pendingNon2026 (4) + pending2026 (3) + extra (2) = 44
+    // Combine everything in order: delivered (35) + pendingNon2026 (4) + pending2026 (3) + extra (2) = 45
     const allItems = [...deliveredPages, ...pendingNon2026, ...pending2026, ...extraPages];
 
     // Helper to handle clicks without removing any original link behaviour
